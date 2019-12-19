@@ -66,7 +66,6 @@ import_submodules("udify")
 
 try:
     util.cache_vocab(train_params)
-    import ipdb;ipdb.set_trace()
     train_model(train_params, serialization_dir, recover=bool(args.resume))
 except KeyboardInterrupt:
     logger.warning("KeyboardInterrupt, skipping training")
