@@ -41,7 +41,8 @@ class UdifyModel(Model):
                  mix_embedding: int = None,
                  layer_dropout: int = 0.0,
                  initializer: InitializerApplicator = InitializerApplicator(),
-                 regularizer: Optional[RegularizerApplicator] = None) -> None:
+                 regularizer: Optional[RegularizerApplicator] = None, 
+                 philipps_param: int = 5.0) -> None:
         super(UdifyModel, self).__init__(vocab, regularizer)
 
         self.tasks = sorted(tasks)

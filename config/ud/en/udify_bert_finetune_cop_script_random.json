@@ -21,6 +21,7 @@
     "directory_path": "data/vocab/cop_scriptorium/vocabulary"
   },
   "model": {
+    "philipps_param": 103,
     "word_dropout": 0.2,
     "mix_embedding": 12,
     "layer_dropout": 0.1,
