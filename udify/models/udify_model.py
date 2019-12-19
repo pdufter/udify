@@ -46,6 +46,7 @@ class UdifyModel(Model):
 
         self.tasks = sorted(tasks)
         self.vocab = vocab
+        import ipdb;ipdb.set_trace()
         self.bert_vocab = BertTokenizer.from_pretrained("config/archive/bert-base-multilingual-cased/vocab.txt").vocab
         self.text_field_embedder = text_field_embedder
         self.post_encoder_embedder = post_encoder_embedder
