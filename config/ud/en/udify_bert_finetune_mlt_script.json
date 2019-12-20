@@ -60,14 +60,14 @@
           "type": "pass_through",
           "input_dim": 768
         },
-        "adaptive": true
+        "adaptive": false
       },
       "lemmas": {
         "encoder": {
           "type": "pass_through",
           "input_dim": 768
         },
-        "adaptive": true
+        "adaptive": false
       },
       "deps": {
         "tag_representation_dim": 256,
