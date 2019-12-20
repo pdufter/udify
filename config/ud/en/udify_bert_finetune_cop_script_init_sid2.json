@@ -8,7 +8,7 @@
       },
       "bert": {
         "type": "udify-bert-pretrained",
-        "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid11/vocab.txt",
+        "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid12/vocab.txt",
         "do_lowercase": false,
         "use_starting_offsets": true
       }
@@ -21,7 +21,7 @@
     "directory_path": "data/vocab/cop_scriptorium/vocabulary"
   },
   "model": {
-    "pretrained_vocab_path": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid11/vocab.txt",
+    "pretrained_vocab_path": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid12/vocab.txt",
     "word_dropout": 0.2,
     "mix_embedding": 12,
     "layer_dropout": 0.1,
@@ -36,7 +36,7 @@
       "token_embedders": {
         "bert": {
           "type": "udify-bert-pretrained",
-          "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid11",
+          "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/cop/start_models/init_sid12",
           "requires_grad": true,
           "dropout": 0.15,
           "layer_dropout": 0.1,
