@@ -21,7 +21,7 @@
     "directory_path": "data/vocab/cop_scriptorium/vocabulary"
   },
   "model": {
-    "pretrained_vocab_path": "/mounts/work/philipp/bertext/experiments/udify/start_models/random/vocab.txt",
+    "philipps_param": 103,
     "word_dropout": 0.2,
     "mix_embedding": 12,
     "layer_dropout": 0.1,

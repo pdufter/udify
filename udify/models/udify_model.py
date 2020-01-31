@@ -35,20 +35,20 @@ class UdifyModel(Model):
                  text_field_embedder: TextFieldEmbedder,
                  encoder: Seq2SeqEncoder,
                  decoders: Dict[str, Model],
-                 pretrained_vocab_path: str,
                  post_encoder_embedder: TextFieldEmbedder = None,
                  dropout: float = 0.0,
                  word_dropout: float = 0.0,
                  mix_embedding: int = None,
                  layer_dropout: int = 0.0,
                  initializer: InitializerApplicator = InitializerApplicator(),
-                 regularizer: Optional[RegularizerApplicator] = None) -> None:
+                 regularizer: Optional[RegularizerApplicator] = None, 
+                 philipps_param: int = 5.0) -> None:
         super(UdifyModel, self).__init__(vocab, regularizer)
 
         self.tasks = sorted(tasks)
         self.vocab = vocab
         import ipdb;ipdb.set_trace()
-        self.bert_vocab = BertTokenizer.from_pretrained(pretrained_vocab_path).vocab
+        self.bert_vocab = BertTokenizer.from_pretrained("config/archive/bert-base-multilingual-cased/vocab.txt").vocab
         self.text_field_embedder = text_field_embedder
         self.post_encoder_embedder = post_encoder_embedder
         self.shared_encoder = encoder
