@@ -96,6 +96,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                          ids: List[str] = None,
                          multiword_ids: List[str] = None,
                          multiword_forms: List[str] = None) -> Instance:
+        import ipdb;ipdb.set_trace()
         fields: Dict[str, Field] = {}
 
         tokens = TextField([Token(w) for w in words], self._token_indexers)
