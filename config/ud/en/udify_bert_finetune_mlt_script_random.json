@@ -8,7 +8,7 @@
       },
       "bert": {
         "type": "udify-bert-pretrained",
-        "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/mlt/start_models/random/vocab.txt",
+        "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/start_models/random/vocab.txt",
         "do_lowercase": false,
         "use_starting_offsets": true
       }
