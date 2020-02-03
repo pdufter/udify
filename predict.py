@@ -44,7 +44,7 @@ parser.add_argument('--language_f', type=str, default="de", help="")
 parser.add_argument('--train_language_f', type=str, default="de", help="")
 parser.add_argument('--proportion', type=float, default=0.0, help="")
 parser.add_argument('--target_side', action='store_true', help="")
-    
+
 args = parser.parse_args()
 
 import_submodules("udify")
@@ -62,6 +62,8 @@ if args.device is not None:
     overrides["trainer"] = {"cuda_device": args.device}
 if args.lazy:
     overrides["dataset_reader"] = {"lazy": args.lazy}
+
+import ipdb;ipdb.set_trace()
 if args.modify:
     overrides["modify_params"] = {"permute": args.permute,
      'chunking': args.chunking,
