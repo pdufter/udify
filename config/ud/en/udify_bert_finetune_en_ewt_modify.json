@@ -17,7 +17,7 @@
       "keep_capitalisation": false,
       "alignment": false,
       "alignment_proportion": 0.0,
-      "target_side": false},
+      "target_side": false
     },
       "bert": {
         "type": "udify-bert-pretrained",
