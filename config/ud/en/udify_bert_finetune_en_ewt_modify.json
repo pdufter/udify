@@ -17,7 +17,7 @@
       "permute": true,
       "chunking": "chunks",
       "meta_chunk_size": 1,
-      "semantic_noise": false,
+      "semantic_noise": true,
       "proportion": 0.0,
       "replace_with_mask": false,
       "lemmatize": false,
