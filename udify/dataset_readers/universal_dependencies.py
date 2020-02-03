@@ -16,6 +16,7 @@ from allennlp.data.tokenizers.word_splitter import SpacyWordSplitter, WordSplitt
 from allennlp.data.tokenizers import Token
 
 from udify.dataset_readers.lemma_edit import gen_lemma_rule
+from udify.predictors.predictor import UdifyPredictor
 
 import logging
 
@@ -46,12 +47,13 @@ class UniversalDependenciesDatasetReader(DatasetReader):
     def _read(self, file_path: str):
         # if `file_path` is a URL, redirect to the cache
         file_path = cached_path(file_path)
-        import ipdb;ipdb.set_trace()
         if self.modify_params is not None:
             import sys
             sys.path.append("/mounts/Users/cisintern/philipp/Dokumente/scrambled-eggs")
             from projects.synsem import modificationstext
             modificator = modificationstext.ModificatorUD(file_path, self.modify_params)
+            predictor = UdifyPredictor(None, None)
+            outfile = open("/mounts/work/philipp/permuted_gold.txt", "w")
 
         with open(file_path, 'r') as conllu_file:
             logger.info("Reading UD instances from conllu dataset at: %s", file_path)
@@ -93,6 +95,9 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                     words, labels = modificator.modify(words, [lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms])
                     lemmas, lemma_rules, upos_tags, xpos_tags, feats, dependencies, ids, multiword_ids, multiword_forms = labels
+                    to_dump = predictor.dump_line({"words": words, "ids": ids, "lemmas": lemmas, "upos": upos_tags, "xpos": xpos_tags, "feats": feats,
+                                "predicted_heads": [x[1] for x in dependencies], "predicted_dependencies": [x[0] for x in dependencies]})
+                    outfile.write(to_dump)
                 yield self.text_to_instance(words, lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms)
 
