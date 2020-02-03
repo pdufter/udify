@@ -22,9 +22,9 @@
     "directory_path": "data/vocab/en_ewt/vocabulary"
   },
   "model": {
-    "word_dropout": 0.2,
+    "word_dropout": 0.0,
     "mix_embedding": false,
-    "layer_dropout": 0.1,
+    "layer_dropout": 0.0,
     "tasks": ["upos"],
     "text_field_embedder": {
       "type": "udify_embedder",
@@ -39,8 +39,8 @@
           "pretrained_model": "bert-base-multilingual-cased",
           "requires_grad": true,
           "dropout": 0.15,
-          "layer_dropout": 0.1,
-          "combine_layers": "all"
+          "layer_dropout": 0.0,
+          "combine_layers": "last"
         }
       }
     },
