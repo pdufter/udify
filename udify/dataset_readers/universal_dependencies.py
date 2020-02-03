@@ -40,7 +40,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
     def __init__(self,
                  token_indexers: Dict[str, TokenIndexer] = None,
                  lazy: bool = False,
-                 modification_params: Dict[Text, Any] = None) -> None:
+                 modify_params: Dict[Text, Any] = None) -> None:
         super().__init__(lazy)
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
         import ipdb
