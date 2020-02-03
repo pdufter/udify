@@ -143,8 +143,8 @@ class UniversalDependenciesDatasetReader(DatasetReader):
 
         return Instance(fields)
 
-    @overrides
     @classmethod
+    @overrides
     def from_params(cls, params: Any) -> Any:
         token_indexers_params = params.pop('token_indexers', {})
         token_indexers = {"tokens": TokenIndexer.from_params(token_indexers_params.pop("tokens", {})), 
