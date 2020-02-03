@@ -43,13 +43,20 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                  modify_params: Dict[Text, Any] = None) -> None:
         super().__init__(lazy)
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
-        import ipdb
-        ipdb.set_trace()
+        self.modify_params = modify_params
 
     @overrides
     def _read(self, file_path: str):
         # if `file_path` is a URL, redirect to the cache
         file_path = cached_path(file_path)
+
+        import ipdb;ipdb.set_trace()
+        if self.modify_params is not None:
+            import sys
+            sys.path.append("/mounts/Users/cisintern/philipp/Dokumente/scrambled-eggs")
+            from projects.synsem import modificationstext
+            modificator = modificationstext.ModificatorUD(self.modify_params)
+            modificator.get_vocabulary(file_path)
 
         with open(file_path, 'r') as conllu_file:
             logger.info("Reading UD instances from conllu dataset at: %s", file_path)
@@ -87,7 +94,12 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                 heads = get_field("head")
                 dep_rels = get_field("deprel")
                 dependencies = list(zip(dep_rels, heads))
-
+                import ipdb;ipdb.set_trace()
+                if self.modify_params is not None:
+                    words, labels = modificator.modify(words, [lemmas, lemma_rules, upos_tags, xpos_tags,
+                                            feats, dependencies, ids, multiword_ids, multiword_forms])
+                    lemmas, lemma_rules, upos_tags, xpos_tags,
+                                            feats, dependencies, ids, multiword_ids, multiword_forms = labels
                 yield self.text_to_instance(words, lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms)
 

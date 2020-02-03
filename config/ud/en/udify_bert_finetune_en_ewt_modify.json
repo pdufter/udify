@@ -24,7 +24,8 @@
       "keep_capitalisation": false,
       "alignment": false,
       "alignment_proportion": 0.0,
-      "target_side": false
+      "target_side": false, 
+      "lang": "en",
     },
   },
   "train_data_path": "/mounts/work/philipp/bertext/udify/data/ud-treebanks-v2.3/UD_English-EWT/en_ewt-ud-train.conllu",
