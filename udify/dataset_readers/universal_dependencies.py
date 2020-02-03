@@ -98,8 +98,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                 if self.modify_params is not None:
                     words, labels = modificator.modify(words, [lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms])
-                    lemmas, lemma_rules, upos_tags, xpos_tags,
-                                            feats, dependencies, ids, multiword_ids, multiword_forms = labels
+                    lemmas, lemma_rules, upos_tags, xpos_tags, feats, dependencies, ids, multiword_ids, multiword_forms = labels
                 yield self.text_to_instance(words, lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms)
 
