@@ -31,9 +31,6 @@ def lazy_parse(text: str, fields: Tuple[str, ...]=DEFAULT_FIELDS):
                    if line and not line.strip().startswith("#")]
 
 
-def modify_wrapper(myinput: List[Any]) -> List[Any]:
-    pass
-
 
 @DatasetReader.register("udify_universal_dependencies")
 class UniversalDependenciesDatasetReader(DatasetReader):
@@ -92,7 +89,6 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                 heads = get_field("head")
                 dep_rels = get_field("deprel")
                 dependencies = list(zip(dep_rels, heads))
-                import ipdb;ipdb.set_trace()
                 if self.modify_params is not None:
                     words, labels = modificator.modify(words, [lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms])
@@ -112,22 +108,6 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                          ids: List[str] = None,
                          multiword_ids: List[str] = None,
                          multiword_forms: List[str] = None) -> Instance:
-        import ipdb;ipdb.set_trace()
-        # do permutations here
-        import sys
-        sys.path.append("/mounts/Users/cisintern/philipp/Dokumente/scrambled-eggs")
-        from projects.synsem import modificationstext
-        examples = modificationstext.modify(examples, False, True, args.language, examples_f, False, True, args.language_f, {"permute": args.permute,
-                                                                                                       'chunking': args.chunking,
-                                                                                                       'meta_chunk_size': args.meta_chunk_size,
-                                                                                                       "semantic_noise": args.semantic_noise,
-                                                                                                       "proportion": args.proportion,
-                                                                                                       "replace_with_mask": args.replace_with_mask,
-                                                                                                       "lemmatize": args.lemmatize,
-                                                                                                       "keep_capitalisation": args.keep_capitalisation,
-                                                                                                       "alignment": args.alignment, 
-                                                                                                       "alignment_proportion": args.alignment_proportion, 
-                                                                                                       "target_side": args.target_side}, tokenizer)
         fields: Dict[str, Field] = {}
 
         tokens = TextField([Token(w) for w in words], self._token_indexers)
