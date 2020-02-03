@@ -44,6 +44,7 @@ parser.add_argument('--language_f', type=str, default="de", help="")
 parser.add_argument('--train_language_f', type=str, default="de", help="")
 parser.add_argument('--proportion', type=float, default=0.0, help="")
 parser.add_argument('--target_side', action='store_true', help="")
+parser.add_argument('--lang', type=str, default="en", help="")
 
 args = parser.parse_args()
 

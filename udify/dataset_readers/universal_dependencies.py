@@ -143,17 +143,17 @@ class UniversalDependenciesDatasetReader(DatasetReader):
 
         return Instance(fields)
 
+'''
     @classmethod
     @overrides
     def from_params(cls, params: Any) -> Any:
-        import ipdb;ipdb.set_trace()
         token_indexers_params = params.pop('token_indexers', {})
         token_indexers = {"tokens": TokenIndexer.from_params(token_indexers_params.pop("tokens", {})), 
             "bert": TokenIndexer.from_params(token_indexers_params.pop("bert", {}))}
         lazy = params.pop('lazy', False)
         modify_params = params.pop('modify_params', None)
         return UniversalDependenciesDatasetReader(token_indexers=token_indexers, lazy=lazy, modify_params=modify_params)
-
+'''
 
 @DatasetReader.register("udify_universal_dependencies_raw")
 class UniversalDependenciesRawDatasetReader(DatasetReader):
