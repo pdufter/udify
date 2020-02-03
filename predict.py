@@ -65,7 +65,7 @@ if args.lazy:
 
 import ipdb;ipdb.set_trace()
 if args.modify:
-    overrides["modify_params"] = {"permute": args.permute,
+    overrides["dataset_reader"] = {"modify_params": {"permute": args.permute,
      'chunking': args.chunking,
      'meta_chunk_size': args.meta_chunk_size,
      "semantic_noise": args.semantic_noise,
@@ -75,7 +75,7 @@ if args.modify:
      "keep_capitalisation": args.keep_capitalisation,
      "alignment": args.alignment,
      "alignment_proportion": args.alignment_proportion,
-     "target_side": args.target_side}
+     "target_side": args.target_side}}
 configs = [Params(overrides), Params.from_file(config_file)]
 params = util.merge_configs(configs)
 
