@@ -76,7 +76,8 @@ if args.modify:
      "keep_capitalisation": args.keep_capitalisation,
      "alignment": args.alignment,
      "alignment_proportion": args.alignment_proportion,
-     "target_side": args.target_side}}
+     "target_side": args.target_side, 
+     "lang": args.lang}}
 configs = [Params(overrides), Params.from_file(config_file)]
 params = util.merge_configs(configs)
 
