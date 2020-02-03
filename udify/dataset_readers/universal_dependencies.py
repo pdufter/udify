@@ -96,7 +96,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
                                             feats, dependencies, ids, multiword_ids, multiword_forms])
                     lemmas, lemma_rules, upos_tags, xpos_tags, feats, dependencies, ids, multiword_ids, multiword_forms = labels
                     to_dump = predictor.dump_line({"words": words, "ids": ids, "lemmas": lemmas, "upos": upos_tags, "xpos": xpos_tags, "feats": feats,
-                                "predicted_heads": [x[1] for x in dependencies], "predicted_dependencies": [x[0] for x in dependencies]})
+                                "predicted_heads": [x[1] for x in dependencies], "predicted_dependencies": [x[0] for x in dependencies], "multiword_ids": multiword_ids, "multiword_forms": multiword_forms})
                     outfile.write(to_dump)
                 yield self.text_to_instance(words, lemmas, lemma_rules, upos_tags, xpos_tags,
                                             feats, dependencies, ids, multiword_ids, multiword_forms)
