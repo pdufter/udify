@@ -23,7 +23,7 @@
   },
   "model": {
     "word_dropout": 0.2,
-    "mix_embedding": null,
+    "mix_embedding": false,
     "layer_dropout": 0.1,
     "tasks": ["upos"],
     "text_field_embedder": {
