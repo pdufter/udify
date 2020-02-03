@@ -46,7 +46,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
     def _read(self, file_path: str):
         # if `file_path` is a URL, redirect to the cache
         file_path = cached_path(file_path)
-
+        import ipdb;ipdb.set_trace()
         if self.modify_params is not None:
             import sys
             sys.path.append("/mounts/Users/cisintern/philipp/Dokumente/scrambled-eggs")
