@@ -139,9 +139,9 @@ def predict_model_with_archive(predictor: str, params: Params, archive: str,
     cuda_device = params["trainer"]["cuda_device"]
 
     check_for_gpu(cuda_device)
-    import ipdb;ipdb.set_trace()
     archive = load_archive(archive,
-                           cuda_device=cuda_device)
+                           cuda_device=cuda_device,
+                           overrides=json.dumps(params.params))
 
     predictor = Predictor.from_archive(archive, predictor)
 
