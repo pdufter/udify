@@ -146,6 +146,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
     @classmethod
     @overrides
     def from_params(cls, params: Any) -> Any:
+        import ipdb;ipdb.set_trace()
         token_indexers_params = params.pop('token_indexers', {})
         token_indexers = {"tokens": TokenIndexer.from_params(token_indexers_params.pop("tokens", {})), 
             "bert": TokenIndexer.from_params(token_indexers_params.pop("bert", {}))}
