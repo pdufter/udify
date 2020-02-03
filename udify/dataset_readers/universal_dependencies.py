@@ -55,8 +55,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
             import sys
             sys.path.append("/mounts/Users/cisintern/philipp/Dokumente/scrambled-eggs")
             from projects.synsem import modificationstext
-            modificator = modificationstext.ModificatorUD(self.modify_params)
-            modificator.get_vocabulary(file_path)
+            modificator = modificationstext.ModificatorUD(file_path, self.modify_params)
 
         with open(file_path, 'r') as conllu_file:
             logger.info("Reading UD instances from conllu dataset at: %s", file_path)
