@@ -29,7 +29,22 @@ parser.add_argument("--device", default=0, type=int, help="CUDA device number; s
 parser.add_argument("--batch_size", default=1, type=int, help="The size of each prediction batch")
 parser.add_argument("--lazy", action="store_true", help="Lazy load dataset")
 parser.add_argument("--raw_text", action="store_true", help="Input raw sentences, one per line in the input file.")
+parser.add_argument("--modify", action="store_true", help="Input raw sentences, one per line in the input file.")
 
+parser.add_argument('--permute', action='store_true', help="")
+parser.add_argument('--chunking', type=str, default="words", help="")
+parser.add_argument('--meta_chunk_size', type=int, default=1, help="")
+parser.add_argument('--semantic_noise', action='store_true', help="")
+parser.add_argument('--replace_with_mask', action='store_true', help="")
+parser.add_argument('--lemmatize', action='store_true', help="")
+parser.add_argument('--keep_capitalisation', action='store_true', help="")
+parser.add_argument('--alignment', action='store_true', help="")
+parser.add_argument('--alignment_proportion', type=float, default=0.0, help="")
+parser.add_argument('--language_f', type=str, default="de", help="")
+parser.add_argument('--train_language_f', type=str, default="de", help="")
+parser.add_argument('--proportion', type=float, default=0.0, help="")
+parser.add_argument('--target_side', action='store_true', help="")
+    
 args = parser.parse_args()
 
 import_submodules("udify")
@@ -47,6 +62,18 @@ if args.device is not None:
     overrides["trainer"] = {"cuda_device": args.device}
 if args.lazy:
     overrides["dataset_reader"] = {"lazy": args.lazy}
+if args.modify:
+    overrides["modify_params"] = {"permute": args.permute,
+     'chunking': args.chunking,
+     'meta_chunk_size': args.meta_chunk_size,
+     "semantic_noise": args.semantic_noise,
+     "proportion": args.proportion,
+     "replace_with_mask": args.replace_with_mask,
+     "lemmatize": args.lemmatize,
+     "keep_capitalisation": args.keep_capitalisation,
+     "alignment": args.alignment,
+     "alignment_proportion": args.alignment_proportion,
+     "target_side": args.target_side}
 configs = [Params(overrides), Params.from_file(config_file)]
 params = util.merge_configs(configs)
 
