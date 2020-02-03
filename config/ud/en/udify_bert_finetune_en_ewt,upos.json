@@ -111,8 +111,8 @@
       "warmup_steps": 392,
       "start_step": 392,
       "factor": 5.0,
-      "gradual_unfreezing": true,
-      "discriminative_fine_tuning": true,
+      "gradual_unfreezing": false,
+      "discriminative_fine_tuning": false,
       "decay_factor": 0.04
     }
   },

@@ -124,7 +124,6 @@ class TagDecoder(Model):
                 gold_tags: Dict[str, torch.LongTensor],
                 metadata: List[Dict[str, Any]] = None) -> Dict[str, torch.Tensor]:
         hidden = encoded_text
-        import ipdb;ipdb.set_trace()
         hidden = self.encoder(hidden, mask)
 
         batch_size, sequence_length, _ = hidden.size()
