@@ -143,6 +143,13 @@ class UniversalDependenciesDatasetReader(DatasetReader):
 
         return Instance(fields)
 
+    @classmethod
+    def from_params(cls, params: Any) -> Any:
+        token_indexers = TokenIndexer.dict_from_params(params.pop('token_indexers', {}))
+        lazy = params.pop('lazy', False)
+        modify_params = params.pop('modify_params', None)
+        return UniversalDependenciesDatasetReader(token_indexers=token_indexers, lazy=lazy, modify_params=modify_params)
+
 
 @DatasetReader.register("udify_universal_dependencies_raw")
 class UniversalDependenciesRawDatasetReader(DatasetReader):
