@@ -4,41 +4,28 @@
     "token_indexers": {
       "tokens": {
         "type": "single_id",
-        "lowercase_tokens": false
+        "lowercase_tokens": true
       },
       "bert": {
         "type": "udify-bert-pretrained",
-        "pretrained_model": "config/archive/bert-base-multilingual-cased/vocab.txt",
+        "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/deu/start_models/mapping/vocab.txt",
         "do_lowercase": false,
         "use_starting_offsets": true
       }
-    },
-    "modify_params": {
-      "permute": true,
-      "chunking": "chunks",
-      "meta_chunk_size": 1,
-      "semantic_noise": false,
-      "proportion": 0.0,
-      "replace_with_mask": false,
-      "lemmatize": false,
-      "keep_capitalisation": false,
-      "alignment": false,
-      "alignment_proportion": 0.0,
-      "target_side": false, 
-      "lang": "en",
-    },
+    }
   },
-  "train_data_path": "/mounts/work/philipp/bertext/udify/data/ud-treebanks-v2.3/UD_English-EWT/en_ewt-ud-train.conllu",
-  "validation_data_path": "/mounts/work/philipp/bertext/udify/data/ud-treebanks-v2.3/UD_English-EWT/en_ewt-ud-dev.conllu",
-  "test_data_path": "/mounts/work/philipp/bertext/udify/data/ud-treebanks-v2.3/UD_English-EWT/en_ewt-ud-test.conllu",
+  "train_data_path": "data/ud-treebanks-v2.3/UD_German-GSD/de_gsd-ud-train.conllu",
+  "validation_data_path": "data/ud-treebanks-v2.3/UD_German-GSD/de_gsd-ud-dev.conllu",
+  "test_data_path": "data/ud-treebanks-v2.3/UD_German-GSD/de_gsd-ud-test.conllu",
   "vocabulary": {
-    "directory_path": "data/vocab/en_ewt/vocabulary"
+    "directory_path": "data/vocab/deu_newworld/vocabulary"
   },
   "model": {
+    "pretrained_vocab_path": "/mounts/work/philipp/bertext/experiments/udify/deu/start_models/mapping/vocab.txt",
     "word_dropout": 0.2,
-    "mix_embedding": null,
-    "layer_dropout": 0.0,
-    "tasks": ["upos"],
+    "mix_embedding": 12,
+    "layer_dropout": 0.1,
+    "tasks": ["upos", "feats", "lemmas", "deps"],
     "text_field_embedder": {
       "type": "udify_embedder",
       "dropout": 0.5,
@@ -49,7 +36,7 @@
       "token_embedders": {
         "bert": {
           "type": "udify-bert-pretrained",
-          "pretrained_model": "bert-base-multilingual-cased",
+          "pretrained_model": "/mounts/work/philipp/bertext/experiments/udify/deu/start_models/mapping",
           "requires_grad": true,
           "dropout": 0.15,
           "layer_dropout": 0.1,
@@ -73,14 +60,14 @@
           "type": "pass_through",
           "input_dim": 768
         },
-        "adaptive": true
+        "adaptive": false
       },
       "lemmas": {
         "encoder": {
           "type": "pass_through",
           "input_dim": 768
         },
-        "adaptive": true
+        "adaptive": false
       },
       "deps": {
         "tag_representation_dim": 256,
