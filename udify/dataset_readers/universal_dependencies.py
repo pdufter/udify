@@ -53,7 +53,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
             from projects.synsem import modificationstext
             modificator = modificationstext.ModificatorUD(file_path, self.modify_params)
             predictor = UdifyPredictor(None, None)
-            outfile = open("/mounts/work/philipp/permuted_gold.txt", "w")
+            outfile = open(self.modify_params.store_gold_permuted, "w")
 
         with open(file_path, 'r') as conllu_file:
             logger.info("Reading UD instances from conllu dataset at: %s", file_path)

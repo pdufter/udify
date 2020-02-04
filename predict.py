@@ -45,6 +45,7 @@ parser.add_argument('--train_language_f', type=str, default="de", help="")
 parser.add_argument('--proportion', type=float, default=0.0, help="")
 parser.add_argument('--target_side', action='store_true', help="")
 parser.add_argument('--lang', type=str, default="en", help="")
+parser.add_argument('--store_gold_permuted', type=str, default="", help="")
 
 args = parser.parse_args()
 
@@ -64,7 +65,6 @@ if args.device is not None:
 if args.lazy:
     overrides["dataset_reader"] = {"lazy": args.lazy}
 
-import ipdb;ipdb.set_trace()
 if args.modify:
     overrides["dataset_reader"] = {"modify_params": {"permute": args.permute,
      'chunking': args.chunking,
@@ -77,7 +77,8 @@ if args.modify:
      "alignment": args.alignment,
      "alignment_proportion": args.alignment_proportion,
      "target_side": args.target_side, 
-     "lang": args.lang}}
+     "lang": args.lang, 
+     "store_gold_permuted": args.store_gold_permuted}}
 configs = [Params(overrides), Params.from_file(config_file)]
 params = util.merge_configs(configs)
 
