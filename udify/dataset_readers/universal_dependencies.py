@@ -53,6 +53,7 @@ class UniversalDependenciesDatasetReader(DatasetReader):
             from projects.synsem import modificationstext
             modificator = modificationstext.ModificatorUD(file_path, self.modify_params)
             predictor = UdifyPredictor(None, None)
+            import ipdb;ipdb.set_trace()
             outfile = open(self.modify_params.store_gold_permuted, "w")
 
         with open(file_path, 'r') as conllu_file:
